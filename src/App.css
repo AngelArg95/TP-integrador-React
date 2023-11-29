@@ -1,6 +1,51 @@
-#inputLabel{
-    display: block;
+*{
+    margin: 0;
+    padding: 0;
 }
 .iconsTasks:hover {
     cursor: pointer;
+}
+.taskCompleted{
+    text-decoration: line-through;
+}
+body{
+    background-image:
+    url(./assets/flat-lay-minimal-work-space-top-view-office-desk-with-computer-keyboard-clipboard-and-coffee-cup-on-white-color-background-with-copy-space-illustration-free-vector.jpg);
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-size: cover;
+}
+h1{
+   
+    font-size: 200px;
+    text-align: center;
+    margin-left: -20px;
+}
+form{
+    width: 500px;
+    text-align: center;
+    margin-left: 700px;
+}
+table{
+    padding: 20px;
+    border-style: solid;
+    background-color: burlywood;
+}
+#description{
+    background-color: burlywood;
+}
+#inputLabel{
+    font-size: 20px;
+}
+::placeholder{
+    color: black;
+}
+input:focus{
+    color: black;
+}
+th{
+    font-size: 30px;
+}
+td{
+    font-size: 25px;
 }

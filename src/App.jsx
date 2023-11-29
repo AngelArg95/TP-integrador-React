@@ -1,7 +1,9 @@
-import { useState } from "react"
-import Input from "./components/Input"
-import TaskList from './components/TaskList';
+import { useState,useEffect } from "react"
+import TaskForm from "./components/TaskForm"
 import "./App.css"
+import TaskList from "./components/TaskList";
+import Swal from 'sweetalert2'
+
 function App() {
   const [tasks, setTasks] = useState([]);
   const handleAddTask = (description) => {
@@ -10,25 +12,32 @@ function App() {
       description: description,
       isCompleted: false,
     };
-    setTasks([...tasks,newTask]);
+    setTasks([...tasks, newTask]);
   };
-  const handleChangeStatus = (id) =>{
-
+  const handleChangeStatus = (id) => {
+    const modifiedTasks = tasks.map(t => t.id === id ? { ...t, isCompleted: !t.isCompleted } : t);
+    setTasks([...modifiedTasks])
   }
   const handleDeleteTask = (id) => {
-    const remainingTasks =tasks.filter(t=> t.id !== id);
+    const remainingTasks = tasks.filter(t => t.id !== id);
     setTasks([...remainingTasks])
-    console.log(tasks)
-    console.log(remainingTasks)
   }
+  useEffect(function(){
+    {if (document.title === "Keep Going") {
+      document.title = "Good Work"
+    } else{
+      document.title = "Keep Going"
+    }}[tasks]
+  }
+  )
+  
+
+ 
   return (
     <>
-      <h1>Lista de Tareas</h1>
-      <Input onAddTask={(description) => handleAddTask(description)}></Input>
-      <TaskList
-       onDeleteTask={(id)=> handleDeleteTask(id)} tasks={tasks}>
-       onChangeStatus={(id)=>handleChangeStatus(id)}
-       </TaskList>
+      <h1>To Do List</h1>
+      <TaskForm onAddTask={(description) => handleAddTask(description)}></TaskForm>
+      <TaskList tasks={tasks} onDeleteTask={(id) => handleDeleteTask(id)} onChangeStatus={(id) => handleChangeStatus(id)} ></TaskList>
     </>
   )
 }

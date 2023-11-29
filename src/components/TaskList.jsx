@@ -1,19 +1,22 @@
-import { IoTrashBin } from "react-icons/io5";
-import { IoCloseCircle } from "react-icons/io5";
-
-
+import Taskitem from "./taskItem";
 function TaskList ({tasks,onDeleteTask,onChangeStatus}){
 return (
-    <>
     <div>
-        <ul>
-            {tasks.map(t=><li>{t.description} {t.id} {t.isCompleted? "completed":"to Do"} <IoTrashBin size={20} color="tomato" className="iconsTasks" onClick={() => onDeleteTask(t.id)}>
-            </IoTrashBin> 
-            <IoCloseCircle onClick={()=>onChangeStatus(t.id)} size={20} color="blue" className="iconsTasks" />
-</li>)}
-        </ul>
+        <table >
+  <thead>
+    <tr>
+      <th >ID</th>
+      <th >Description</th>
+      <th >Done</th>
+      <th >Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <Taskitem tasks={tasks} onDeleteTask={onDeleteTask} onChangeStatus={onChangeStatus}></Taskitem>
+  </tbody>
+</table>
     </div>
-    </>
+    
 )
 }
 export default TaskList
