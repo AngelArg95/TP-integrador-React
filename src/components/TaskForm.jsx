@@ -10,7 +10,7 @@ function Input ({ onAddTask }){
         <form onSubmit={handleSubmit}>
             <label htmlFor="description" id="inputLabel">New Task </label>
             <input type="text" name="description" placeholder="Buy some milk"  id="description" required></input>
-            <input type="submit" value="Add task"></input>
+            <input id="addTask" type="submit" value="Add task"></input>
         </form>
     )
 }

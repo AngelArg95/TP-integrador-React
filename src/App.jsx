@@ -2,10 +2,14 @@ import { useState,useEffect } from "react"
 import TaskForm from "./components/TaskForm"
 import "./App.css"
 import TaskList from "./components/TaskList";
-import Swal from 'sweetalert2'
-
+function getTasksFromStorage(){
+  const storedTasks = window.localStorage.getItem("tasks")
+  const tasks = JSON.parse(storedTasks);
+  return tasks ? tasks : []
+}
 function App() {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(getTasksFromStorage());
+
   const handleAddTask = (description) => {
     const newTask = {
       id: self.crypto.randomUUID(),
@@ -22,12 +26,19 @@ function App() {
     const remainingTasks = tasks.filter(t => t.id !== id);
     setTasks([...remainingTasks])
   }
+  useEffect(()=>{
+    if(tasks.length){
+      window.localStorage.setItem("tasks",JSON.stringify(tasks))
+    }
+   
+  },[tasks])
   useEffect(function(){
-    {if (document.title === "Keep Going") {
+    { 
+      if (document.title === "Keep Going") {
       document.title = "Good Work"
     } else{
       document.title = "Keep Going"
-    }}[tasks]
+    } }[tasks]
   }
   )
   

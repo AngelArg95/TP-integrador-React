@@ -16,15 +16,13 @@ body{
      background-size: cover;
 }
 h1{
-   
     font-size: 200px;
     text-align: center;
-    margin-left: -20px;
 }
 form{
     width: 500px;
     text-align: center;
-    margin-left: 700px;
+    margin-left: 36.8vw;
 }
 table{
     padding: 20px;
@@ -49,3 +47,8 @@ th{
 td{
     font-size: 25px;
 }
+#addTask{
+    background-color: burlywood;
+    color: black;
+}
+
